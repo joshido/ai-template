@@ -45,6 +45,14 @@ Replace the sections below with details relevant to your project.
 - **.NET Aspire**: 13 or later
 - **.NET**: 10 or later, prefer the latest version regardless of whether it is STS or LTS
 
+### Workflow
+
+Always pause after presenting a plan and ask clarifying questions before proceeding to build. Do not assume intent or make guesses about requirements — if anything is unclear or ambiguous, ask the user for clarification instead of just trying things. It is better to ask one extra question than to build the wrong thing and have to redo it.
+
+### Development Methodology
+
+Use Behavior-Driven Development (BDD) when creating solutions. When building a new feature, write the spec tests first — before writing any implementation code. The specs define the expected behavior and serve as the acceptance criteria. Only after the specs are in place should the implementation begin.
+
 ### Development Commands
 
 <!-- Document how to build, test, lint, and run the project. Example:
