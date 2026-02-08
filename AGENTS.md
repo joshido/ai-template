@@ -55,6 +55,8 @@ Use Behavior-Driven Development (BDD) when creating solutions. When building a n
 
 ### Git
 
+Always rebase on `origin/main` before anything else is done.
+
 Use the git CLI for all git-related commands. Do not use `gh` or any other GitHub CLI wrapper.
 
 ### Development Commands
