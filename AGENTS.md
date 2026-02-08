@@ -53,6 +53,10 @@ Always pause after presenting a plan and ask clarifying questions before proceed
 
 Use Behavior-Driven Development (BDD) when creating solutions. When building a new feature, write the spec tests first — before writing any implementation code. The specs define the expected behavior and serve as the acceptance criteria. Only after the specs are in place should the implementation begin.
 
+### Git
+
+Use the git CLI for all git-related commands. Do not use `gh` or any other GitHub CLI wrapper.
+
 ### Development Commands
 
 <!-- Document how to build, test, lint, and run the project. Example:
