@@ -39,7 +39,11 @@ Replace the sections below with details relevant to your project.
 
 ### Tech Stack
 
-<!-- List your languages, frameworks, and key dependencies here. -->
+- Always check the web for the latest version of each dependency before installing or upgrading.
+- **Python**: 3.14 or later
+- **React / Next.js**: Use the latest available version
+- **.NET Aspire**: 13 or later
+- **.NET**: 10 or later, prefer the latest version regardless of whether it is STS or LTS
 
 ### Development Commands
 
