@@ -4,27 +4,6 @@
 
 This is an AI-assisted development template. It provides a shared configuration for multiple AI coding tools (Claude Code, Aider, Gemini) so that project context and instructions are defined once in this file and consumed everywhere.
 
-## Repository Structure
-
-```
-.
-├── AGENTS.md              # Shared project instructions (this file)
-├── CLAUDE.md              # Claude Code entry point (references AGENTS.md)
-├── .aider.conf.yml        # Aider configuration (reads AGENTS.md)
-├── .gemini/
-│   └── settings.json      # Gemini configuration (reads AGENTS.md)
-├── README.md              # Project readme
-└── LICENSE                # GPL v3
-```
-
-## How It Works
-
-- **Claude Code** reads `CLAUDE.md`, which includes this file via `@AGENTS.md`.
-- **Aider** reads this file directly via the `read: AGENTS.md` setting in `.aider.conf.yml`.
-- **Gemini** reads this file via the `contextFileName` setting in `.gemini/settings.json`.
-
-This means any instructions added here are automatically available to all three tools.
-
 ## Getting Started
 
 To use this template for your own project:
@@ -39,9 +18,13 @@ Replace the sections below with details relevant to your project.
 
 ### Tech Stack
 
-- Always check the web for the latest version of each dependency before installing or upgrading.
+Always check the web for the latest version of each dependency before installing or upgrading.
+#### Here are some of the common languages I prefer
 - **Python**: 3.14 or later
-- **React / Next.js**: Use the latest available version
+- **React**: Use the latest available version
+- **NextJS**: Use the latest available version
+- **ReactRouter**: Use the latest available version
+- **ShadCN**: Use the latest available version
 - **.NET Aspire**: 13 or later
 - **.NET**: 10 or later, prefer the latest version regardless of whether it is STS or LTS
 
@@ -57,27 +40,26 @@ Use Behavior-Driven Development (BDD) when creating solutions. When building a n
 
 Always rebase on `origin/main` before anything else is done.
 
-Use the git CLI for all git-related commands. Do not use `gh` or any other GitHub CLI wrapper.
+Use the git CLI for all git-related commands. 
+When running github specific commands, use the official github cli (found at
+https://cli.github.com/)
 
 ### Development Commands
 
-<!-- Document how to build, test, lint, and run the project. Example:
-```
-npm install          # Install dependencies
-npm run build        # Build the project
-npm test             # Run tests
-npm run lint         # Lint the code
-```
--->
+When aspire exist use aspire run command from the aspire cli (found at https://aspire.dev/get-started/install-cli/)
+
+Otherwise use what's default for the specific language. Use web to find the correct syntax.
 
 ### Code Conventions
-
-<!-- Describe naming conventions, file organization patterns, or style guidelines. -->
+Follow the official guidelines of the specific language used, use the web to find the relevant for the solution
 
 ### Testing
 
-<!-- Describe the test framework, how to run tests, and expectations for test coverage. -->
+See the chapter for [Workflow](#workflow)
 
 ### Architecture
-
-<!-- Provide a high-level overview of the system architecture, key modules, and data flow. -->
+- Use the SOLID principle when designing and coding the solutions.
+- Make it right the first time
+- YAGNI
+- KISS
+And when in doubt ask.
