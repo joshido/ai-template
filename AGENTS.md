@@ -1,65 +1,135 @@
-# Project Instructions
+# AGENTS.md
 
-## Overview
+This is the primary context file for this repository.
 
-This is an AI-assisted development template. It provides a shared configuration for multiple AI coding tools (Claude Code, Aider, Gemini) so that project context and instructions are defined once in this file and consumed everywhere.
+## Purpose
 
-## Getting Started
+<!-- CUSTOMIZE: Replace this section with a description of your project. -->
+This repo builds [describe your project]. Each component lives in its own folder.
 
-To use this template for your own project:
+## Core Principles
 
-1. Clone or fork this repository.
-2. Add your source code, dependencies, and tooling.
-3. Update this file with project-specific instructions (tech stack, conventions, commands, etc.).
+- Never assume — if uncertain, ask.
+- If the user states something exists, treat it as fact and use the web to verify if needed.
 
-## Customization Guide
+---
 
-Replace the sections below with details relevant to your project.
+## Workflow Rules
 
-### Tech Stack
+- No implementation starts without user approval of the plan.
+- Once a plan is agreed on, proceed with all file additions and modifications without asking for further approval — this includes files inside `.ai/`.
+- Deletions always require explicit user approval unless the user has stated otherwise for a specific task.
+- One task at a time. Each task is committed before the next begins.
+- A task is **done** only when all four conditions are met:
+  1. Tests exist (BDD, written by Tester)
+  2. Implementation passes all tests (written by Developer)
+  3. Reviewed with no issues or vulnerabilities (by Reviewer)
+  4. Committed to the branch
 
-Always check the web for the latest version of each dependency before installing or upgrading.
-#### Here are some of the common languages I prefer
-- **Python**: 3.14 or later
-- **React**: Use the latest available version
-- **NextJS**: Use the latest available version
-- **ReactRouter**: Use the latest available version
-- **ShadCN**: Use the latest available version
-- **.NET Aspire**: 13 or later
-- **.NET**: 10 or later, prefer the latest version regardless of whether it is STS or LTS
+---
 
-### Workflow
+## Per-Task Flow
 
-Always pause after presenting a plan and ask clarifying questions before proceeding to build. Do not assume intent or make guesses about requirements — if anything is unclear or ambiguous, ask the user for clarification instead of just trying things. It is better to ask one extra question than to build the wrong thing and have to redo it.
+```
+User approves plan
+       │
+       ▼
+  Orchestrator breaks plan into tasks
+       │
+       ▼
+  Tester writes BDD tests (no implementation yet)
+       │
+       ▼
+  Orchestrator reviews tests → rejects/requests changes if needed
+       │
+       ▼
+  Developer implements until all tests pass
+       │
+       ▼
+  Orchestrator reviews implementation → rejects/requests changes if needed
+       │
+       ▼
+  Reviewer checks quality, correctness, security
+       │
+       ▼
+  Orchestrator evaluates findings → applies valid ones, rejects noise
+       │
+       ▼
+  All clear → Orchestrator commits
+       │
+       ▼
+  Task marked done → next task begins
+```
 
-### Development Methodology
+---
 
-Use Behavior-Driven Development (BDD) when creating solutions. When building a new feature, write the spec tests first — before writing any implementation code. The specs define the expected behavior and serve as the acceptance criteria. Only after the specs are in place should the implementation begin.
+## Guard Rules
 
-### Git
+- If Tester output is weak or off-target, Orchestrator sends it back — not to Developer.
+- If Developer output fails tests or deviates from plan, Orchestrator sends it back — not to Reviewer.
+- If Reviewer raises a valid finding, Developer fixes it and the review reruns before commit.
+- Orchestrator never commits unless tests pass and review is clean.
 
-Always rebase on `origin/main` before anything else is done.
+---
 
-Use the git CLI for all git-related commands. 
-When running github specific commands, use the official github cli (found at
-https://cli.github.com/)
+## Escalation
 
-### Development Commands
+If an agent fails to produce acceptable output after **3 rounds** of feedback, the Orchestrator stops and escalates to the user with:
+- What the task is
+- What was attempted
+- What keeps failing or being rejected
+- A specific question or decision needed to unblock
 
-When aspire exist use aspire run command from the aspire cli (found at https://aspire.dev/get-started/install-cli/)
+Do not loop indefinitely. Escalate and wait.
 
-Otherwise use what's default for the specific language. Use web to find the correct syntax.
+---
 
-### Code Conventions
-Follow the official guidelines of the specific language used, use the web to find the relevant for the solution
+## Branch Strategy
 
-### Testing
+- Each feature gets its own branch: `feat/<feature-name>`
+- Each bug fix gets its own branch: `fix/<short-description>`
+- Never push directly to `main`
+- A PR is created when a feature reaches a shippable milestone or is complete — not per task
+- Branch naming uses kebab-case
 
-See the chapter for [Workflow](#workflow)
+---
 
-### Architecture
-- Use the SOLID principle when designing and coding the solutions.
-- Make it right the first time
-- YAGNI
-- KISS
-And when in doubt ask.
+## Plan Template
+
+See `.ai/plan-template.md` for the required format when presenting a plan to the user.
+
+---
+
+## Commit Convention
+
+All commits must follow [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+```
+
+**Types:** `feat`, `fix`, `docs`, `chore`, `refactor`, `test`, `style`, `ci`
+
+Examples:
+- `feat(auth): add JWT validation`
+- `fix(api): handle null response from upstream`
+- `docs(readme): update setup instructions`
+- `test(parser): add BDD scenarios for edge cases`
+- `chore(deps): update dependencies`
+
+---
+
+## Agents
+
+Agent definitions live in `.ai/agents/`. Each agent is loaded only when needed:
+
+- `.ai/agents/orchestrator.md` — primary agent, plans and drives the workflow
+- `.ai/agents/tester.md` — writes BDD tests before implementation
+- `.ai/agents/developer.md` — implements tasks and makes tests pass
+- `.ai/agents/reviewer.md` — reviews code quality, correctness, and security
+
+Plugin assignments are in `.ai/plugins.md`.
+
+Recorded mistakes and how to avoid them are in `.ai/lessons-learned.md`. Read it before starting any task.
