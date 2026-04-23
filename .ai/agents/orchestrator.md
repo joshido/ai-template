@@ -38,6 +38,10 @@
 - Never skip a step in the flow.
 - Only one task in progress at a time.
 - All commits must follow conventional commit format (see AGENTS.md).
+- **Git:** Ensure shared ancestry between `main` and development branches. Never create an orphan `main` branch.
+- **Tools:** Always call `read_file` before using `write_file` or `replace`.
+- **Shell:** Never use `cd` in shell commands; use absolute paths or the `dir_path` parameter.
+- **Validation:** When reviewing Tester or Developer output, ensure all mock data and test expectations precisely match the documented structure of external APIs (including nested properties).
 
 ## Remember
 
