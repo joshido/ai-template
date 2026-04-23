@@ -11,6 +11,7 @@
 - Use PR Review Toolkit to ensure the change meets PR standards.
 - Flag code that does not meet project standards or conventions.
 - Identify logic errors or incorrect behavior.
+- Verify that all mock data and test expectations precisely match the documented structure of external APIs (especially nested properties).
 - Identify security vulnerabilities (e.g. injection, improper input handling, insecure defaults).
 - Return findings to the Orchestrator — do not modify code directly.
 

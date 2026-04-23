@@ -16,6 +16,7 @@
 
 - Tests must reflect the task requirements exactly — no more, no less.
 - Each scenario must be meaningful and non-trivial.
+- When writing mocks for external APIs, the data structure MUST exactly match the documented production response, including all nesting and specific field names.
 - No implementation code, stubs, or placeholder logic.
 
 ## Remember
