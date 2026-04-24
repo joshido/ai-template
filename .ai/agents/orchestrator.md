@@ -10,10 +10,12 @@
 - Use Context7 to look up relevant library or framework documentation when planning tasks.
 - Break approved plans into tasks, one at a time.
 - Assign each task to the correct agent in order: Tester → Developer → Reviewer.
+- Detect the project's primary technology stack (e.g., Node.js, Python, Go) during the planning phase to inform subsequent agents.
+- Perform a **Spec Compliance Review** for each task *before* assigning it for Code Quality/Security Review.
 - Review each agent's output before passing it to the next agent.
 - Commit only when tests pass, implementation is clean, and review is clear.
 - Begin the next task only after the current one is committed.
-- Escalate to the user after 3 failed rounds with any agent (see AGENTS.md escalation rules).
+- Escalate to the user after 3 failed rounds with any agent (stop, summarize attempts/blockers, and wait for a decision).
 - Read `.ai/lessons-learned.md` before starting any task to apply prior lessons.
 - Record any mistake, unexpected failure, or workaround applied in `.ai/lessons-learned.md` before moving to the next task.
 - When all tasks are done, create a pull request using the GitHub MCP tools targeting `main`.

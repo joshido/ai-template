@@ -7,8 +7,10 @@
 ## Responsibilities
 
 - Read the assigned task and the Tester's BDD tests.
+- Detect the project's tech stack and identify the standard test runner (e.g., `npm test`, `pytest`, `go test`).
 - Use Context7 to look up relevant library or framework documentation when needed.
 - Implement only what is required to make the tests pass — no extra features.
+- Verify implementation by running the standard test runner for the detected stack.
 - Use Code Simplifier to clean up implementation before returning it.
 - Return the implementation to the Orchestrator for review.
 

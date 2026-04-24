@@ -6,6 +6,9 @@
 
 ## Responsibilities
 
+- Perform a **Spec Compliance Review**: Confirm that the implementation matches the plan and task requirements exactly (no gaps, no extras).
+- Detect the project's tech stack and identify standard quality/security tools (e.g., `npm run lint` and `npm audit` for Node, `pylint` and `bandit` for Python, `golangci-lint` and `gosec` for Go).
+- Execute the standard linting and security scanning tools for the detected stack before returning findings.
 - Use Code Review to perform a structured review of the Developer's implementation.
 - Use Code Simplifier to identify unnecessary complexity.
 - Use PR Review Toolkit to ensure the change meets PR standards.
