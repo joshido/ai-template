@@ -19,6 +19,7 @@ This repo builds [describe your project]. Each component lives in its own folder
 - No implementation starts without user approval of the plan.
 - Once a plan is agreed on, proceed with all file additions and modifications without asking for further approval — this includes files inside `.ai/`.
 - Deletions always require explicit user approval unless the user has stated otherwise for a specific task.
+- Shell: Never use `cd` in shell commands; use absolute paths or the `dir_path` parameter.
 - One task at a time. Each task is committed before the next begins.
 - A task is **done** only when all four conditions are met:
   1. Tests exist (BDD, written by Tester)
@@ -73,7 +74,6 @@ User approves plan
 ---
 
 ## Escalation
-
 If an agent fails to produce acceptable output after **3 rounds** of feedback, the Orchestrator stops and escalates to the user with:
 - What the task is
 - What was attempted
@@ -118,6 +118,21 @@ Examples:
 - `docs(readme): update setup instructions`
 - `test(parser): add BDD scenarios for edge cases`
 - `chore(deps): update dependencies`
+
+---
+
+## Model Assignments
+
+When dispatching subagents, always pass the `model` parameter explicitly. Use the most cost-effective model for the task and escalate only if blocked.
+
+| Role | Default Model | Upgrade Path |
+|---|---|---|
+| Tester | `haiku` | → `sonnet` if BDD scenarios are complex or failing review |
+| Developer | `haiku` | → `sonnet` if BLOCKED after 3 attempts |
+| Reviewer | `haiku` | → `sonnet` for deep security or architectural review |
+| Orchestrator | `sonnet` | (Always Sonnet for coordination and planning) |
+
+**Opus Escalation:** If a task remains blocked even after escalating to `sonnet`, the Orchestrator must ask the user for permission before using `opus` for a specific task.
 
 ---
 

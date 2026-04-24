@@ -7,10 +7,12 @@
 ## Responsibilities
 
 - Read the assigned task from the Orchestrator.
+- Detect the project's tech stack (look for `package.json`, `pytest.ini`, `go.mod`, etc.) to determine the appropriate testing framework.
 - Use Context7 to look up relevant library or framework documentation before writing tests.
 - Write BDD-style tests (Given / When / Then) that fully describe expected behavior.
+- Document the exact command needed to run the tests (e.g., `npm test`, `pytest`, `go test`).
 - Do not implement any logic — tests must fail until the Developer completes the task.
-- Return tests to the Orchestrator for review before they are passed to the Developer.
+- Return tests and the execution command to the Orchestrator for review before they are passed to the Developer.
 
 ## Rules
 
