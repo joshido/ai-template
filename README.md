@@ -2,6 +2,8 @@
 
 A project-agnostic four-agent AI development workflow for Claude Code, Gemini CLI, and GitHub Copilot.
 
+> **Plugin-free variant** (GitHub plugin only, all other capabilities use native tools): [joshido/ai-template-core](https://github.com/joshido/ai-template-core)
+
 ## What's Included
 
 | File | Purpose |
